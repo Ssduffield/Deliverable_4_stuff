@@ -1,0 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using AICore;
+
+namespace BehaviorTree
+{
+    public class BTAgent : AIAgentBase
+    {
+        [SerializeField] private BehaviorTreeGraph btGraph;
+
+        protected override void Start()
+        {
+            base.Start();
+
+            if (btGraph != null)
+            {
+                //
+            }
+        }
+    }
+}

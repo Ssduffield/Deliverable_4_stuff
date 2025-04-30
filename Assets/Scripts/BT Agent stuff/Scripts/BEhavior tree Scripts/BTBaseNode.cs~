@@ -1,0 +1,53 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using XNode;
+
+namespace BehaviorTree
+{
+
+	public abstract class BTBaseNode : NodeGraph
+	{
+		public bool hasStarted = false;
+		public State state;
+
+		public State Update()
+		{
+			if(hasStarted == false)
+			{
+				OnStart();
+				hasStarted = true;
+			}
+
+			state = OnUpdate();
+
+			if(state == State.Failure || state == State.Success)
+			{
+				OnStop();
+				hasStarted = false;
+			}
+
+			return state;
+		}
+
+		protected abstract void OnStart();
+
+        protected abstract void OnStop();
+
+		protected abstract State OnUpdate();
+
+		public virtual void InitNode()			// virtual allows for inheritance to be overriden; default function
+		{
+			//
+		}
+
+    }
+
+	public enum State
+	{
+		Running,
+		Success,
+		Failure
+	}
+
+}

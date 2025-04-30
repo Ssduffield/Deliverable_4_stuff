@@ -1,0 +1,48 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using XNode;
+
+namespace BehaviorTree
+
+{
+
+	public class MoveToCover : BTActionNodeBase
+	{
+        public Transform player;
+        public List<Transform> coverSpots = new List<Transform>();
+
+        protected override void OnStart()
+        {
+            
+        }
+
+        protected override void OnStop()
+        {
+            
+        }
+
+        protected override State OnUpdate()
+        {
+            RaycastHit hit;
+            foreach (Transform spot in coverSpots)
+            {
+                if (Physics.Raycast(player.position, spot.position - player.position,out hit))
+                {
+                    if (!_owner.GetNavAgent.pathPending)
+                    {
+                        _owner.GetNavAgent.SetDestination(spot.position);
+                    }
+                    else
+                    {
+                        return State.Running;
+                    }
+                }
+            }
+            
+            
+
+            return State.Success;
+        }
+    }
+}

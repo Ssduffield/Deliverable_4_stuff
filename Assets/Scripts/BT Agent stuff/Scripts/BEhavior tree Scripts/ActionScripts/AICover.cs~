@@ -1,0 +1,53 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using AICore;
+
+public class AiCover : MonoBehaviour
+{
+    public enum State
+    {
+        UnderAttack,
+        LookForCover,
+        CoverFound
+    }
+
+    public State currentState;
+    public float maxDist;
+    public float distWeight, dangerWeight;
+    public float playerFear;
+
+    public float fear;
+
+    public Player player;
+
+    void Update()
+    {
+        fear = CalculateFear(player)
+
+        if (fear < 0.3f)
+        {
+            currentState = State.UnderAttack;
+        }
+        if (fear < 0.7f)
+        {
+            currentState = State.LookForCover;
+        }
+        else
+        {
+            currentState = State.CoverFound
+        }
+    }
+
+    public float CalculateFear(Player player)
+    {
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+
+        float wtFactor = (1 - player.wt / player.maxWT);
+        float distFactor = (1 - distance / maxDist);
+
+        float fear = (wtFactor * dangerWeight) + (distFactor * distWeight);
+        return fear;
+    }
+}

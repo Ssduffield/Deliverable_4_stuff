@@ -1,0 +1,39 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using XNode;
+
+namespace BehaviorTree
+{
+
+    public class WaitAction : BTActionNodeBase
+    {
+        public WaitType waitType;
+        public Vector2 waitDuration;
+
+        private float _value;
+        private float _startTime;
+
+        public enum WaitType
+        {
+            SetDuration,
+            RandomDureation
+        }
+
+
+        protected override void OnStart()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void OnStop()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override State OnUpdate()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+}

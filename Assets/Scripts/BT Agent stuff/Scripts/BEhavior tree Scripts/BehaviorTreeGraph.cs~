@@ -1,0 +1,13 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using XNode;
+
+namespace BehaviorTree
+{
+	[CreateAssetMenu]
+	public class BehaviorTreeGraph : NodeGraph
+	{
+
+	}
+}

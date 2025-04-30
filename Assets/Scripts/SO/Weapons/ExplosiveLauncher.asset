@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae81a6addc5943d59c08baf8cf6dc24, type: 3}
+  m_Name: ExplosiveLauncher
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 1131686645214795496, guid: da66a430e05e94a36b5b35d8c3cdfb28, type: 3}
+  projectileSpeed: 20
+  damageAmount: 5
